@@ -13,10 +13,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = .cyan
     }
-
-
+    
+    @IBAction func addButtonDidTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Add what to do.", message: nil, preferredStyle: .alert)
+        alertController.addTextField(configurationHandler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.view.tintColor = .darkGray
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource {
@@ -28,10 +39,7 @@ extension ViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.backgroundColor = .clear
-        cell.textLabel?.text = "Hello!"
         
         return cell
     }
-    
-    
 }
