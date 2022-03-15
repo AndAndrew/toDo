@@ -9,7 +9,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var toDo: [String] = []
+    var toDo: [String] = (UserDefaults.standard.object(forKey: "toDoArray") as? [String] != nil)
+    ? UserDefaults.standard.object(forKey: "toDoArray") as! [String]
+    : []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,6 +27,9 @@ class ViewController: UIViewController {
             toDoText = toDoText.trimmingCharacters(in: .whitespaces)
             if toDoText != "" {
                 self.toDo.insert(toDoText, at: 0)
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(self.toDo, forKey: "toDoArray")
+                }
                 self.tableView.reloadData()
             }
         }
