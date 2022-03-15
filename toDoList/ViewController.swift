@@ -55,3 +55,19 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
+            self.toDo.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            DispatchQueue.main.async {
+                UserDefaults.standard.set(self.toDo, forKey: "toDoArray")
+            }
+            complete(true)
+        }
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
+}
