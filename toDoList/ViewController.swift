@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let defaults = UserDefaults.standard
     var toDo: [String] = (UserDefaults.standard.object(forKey: "toDoArray") as? [String] != nil)
     ? UserDefaults.standard.object(forKey: "toDoArray") as! [String]
     : []
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
             if toDoText != "" {
                 self.toDo.insert(toDoText, at: 0)
                 DispatchQueue.main.async {
-                    UserDefaults.standard.set(self.toDo, forKey: "toDoArray")
+                    self.defaults.set(self.toDo, forKey: "toDoArray")
                 }
                 self.tableView.reloadData()
             }
@@ -62,7 +63,7 @@ extension ViewController: UITableViewDelegate {
             self.toDo.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             DispatchQueue.main.async {
-                UserDefaults.standard.set(self.toDo, forKey: "toDoArray")
+                self.defaults.set(self.toDo, forKey: "toDoArray")
             }
             complete(true)
         }
