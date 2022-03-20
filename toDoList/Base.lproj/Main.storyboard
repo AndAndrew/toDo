@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,13 +32,47 @@
                                 <rect key="frame" x="0.0" y="74" width="414" height="822"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gI2-an-Yqz">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gI2-an-Yqz" customClass="ToDoCell" customModule="toDoList" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="47.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gI2-an-Yqz" id="V94-a3-iz1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGM-RJ-VPc">
+                                                    <rect key="frame" x="32" y="6" width="35" height="35.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="NmI-w2-QhV"/>
+                                                        <constraint firstAttribute="height" constant="35" id="QbF-i0-LKM"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="doneButtonTapped:" destination="gI2-an-Yqz" eventType="touchUpInside" id="DGS-rc-wlH"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2z-Xk-oHu">
+                                                    <rect key="frame" x="75" y="13" width="319" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HGM-RJ-VPc" firstAttribute="top" secondItem="V94-a3-iz1" secondAttribute="top" constant="6" id="Z56-4j-7EV"/>
+                                                <constraint firstItem="q2z-Xk-oHu" firstAttribute="top" secondItem="V94-a3-iz1" secondAttribute="topMargin" constant="2" id="Zky-1H-N2N"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="q2z-Xk-oHu" secondAttribute="bottom" constant="2" id="g9x-xk-hbV"/>
+                                                <constraint firstItem="q2z-Xk-oHu" firstAttribute="leading" secondItem="HGM-RJ-VPc" secondAttribute="trailing" constant="8" symbolic="YES" id="hjh-8F-cPx"/>
+                                                <constraint firstItem="HGM-RJ-VPc" firstAttribute="leading" secondItem="V94-a3-iz1" secondAttribute="leading" constant="32" id="mib-UG-Vjg"/>
+                                                <constraint firstAttribute="bottom" secondItem="HGM-RJ-VPc" secondAttribute="bottom" constant="6" id="sfZ-ha-Ief"/>
+                                                <constraint firstItem="q2z-Xk-oHu" firstAttribute="trailing" secondItem="V94-a3-iz1" secondAttribute="trailingMargin" id="vaQ-sA-MSg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="doneButton" destination="HGM-RJ-VPc" id="2M5-4q-zm2"/>
+                                            <outlet property="toDoLabel" destination="q2z-Xk-oHu" id="aqm-C6-Nd4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -68,6 +102,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

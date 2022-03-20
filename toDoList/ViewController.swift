@@ -50,9 +50,9 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ToDoCell
         cell.backgroundColor = .clear
-        cell.textLabel?.text = toDo[indexPath.row]
+        cell.toDoLabel.text = toDo[indexPath.row]
         return cell
     }
 }
