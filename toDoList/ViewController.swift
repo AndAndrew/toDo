@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func addButtonDidTapped(_ sender: Any) {
+    @IBAction func addButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Add what to do.", message: nil, preferredStyle: .alert)
         alertController.addTextField(configurationHandler: nil)
         let okAction = UIAlertAction(title: "OK", style: .default) {_ in
@@ -40,7 +40,6 @@ class ViewController: UIViewController {
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
-    
 }
 
 extension ViewController: UITableViewDataSource {
