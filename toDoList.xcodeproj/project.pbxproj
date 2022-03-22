@@ -15,6 +15,7 @@
 		7F81D51A27DA2D180079449B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F81D51927DA2D180079449B /* Assets.xcassets */; };
 		7F81D51D27DA2D180079449B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F81D51B27DA2D180079449B /* LaunchScreen.storyboard */; };
 		7FDBD0D327E61D1800D43291 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDBD0D227E61D1800D43291 /* ToDoCell.swift */; };
+		7FE1FC7727E9A8D900FFB59A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE1FC7627E9A8D900FFB59A /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		7F81D51C27DA2D180079449B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F81D51E27DA2D180079449B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FDBD0D227E61D1800D43291 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		7FE1FC7627E9A8D900FFB59A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				7F81D50D27DA2D170079449B /* AppDelegate.swift */,
 				7F81D50F27DA2D170079449B /* SceneDelegate.swift */,
 				7F81D51127DA2D170079449B /* ViewController.swift */,
+				7FE1FC7627E9A8D900FFB59A /* DetailViewController.swift */,
 				7FDBD0D227E61D1800D43291 /* ToDoCell.swift */,
 				7F81D51327DA2D170079449B /* Main.storyboard */,
 				7F81D51927DA2D180079449B /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				7F81D51227DA2D170079449B /* ViewController.swift in Sources */,
 				7F81D50E27DA2D170079449B /* AppDelegate.swift in Sources */,
 				7F81D51027DA2D170079449B /* SceneDelegate.swift in Sources */,
+				7FE1FC7727E9A8D900FFB59A /* DetailViewController.swift in Sources */,
 				7F81D51827DA2D170079449B /* toDoList.xcdatamodeld in Sources */,
 				7FDBD0D327E61D1800D43291 /* ToDoCell.swift in Sources */,
 			);

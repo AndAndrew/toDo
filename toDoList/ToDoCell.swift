@@ -19,6 +19,6 @@ class ToDoCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func doneButtonTapped(_ sender: Any) {
-        doneButton.imageView?.image == UIImage(systemName: "checkmark.circle") ? doneButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal) : doneButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+        doneButton.imageView?.image == UIImage(systemName: "circle") ? doneButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal) : doneButton.setImage(UIImage(systemName: "circle"), for: .normal)
     }
 }
