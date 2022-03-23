@@ -70,4 +70,10 @@ extension ViewController: UITableViewDelegate {
         configuration.performsFirstActionWithFullSwipe = true
         return configuration
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailVC.toDo = toDo[indexPath.row]
+        present(detailVC, animated: true, completion: nil)
+    }
 }

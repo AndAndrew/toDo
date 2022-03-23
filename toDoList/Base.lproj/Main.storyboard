@@ -21,14 +21,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="gI2-an-Yqz" customClass="ToDoCell" customModule="toDoList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="47"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="47.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gI2-an-Yqz" id="V94-a3-iz1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGM-RJ-VPc">
-                                                    <rect key="frame" x="32" y="6" width="35" height="35"/>
+                                                    <rect key="frame" x="32" y="6" width="35" height="35.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="NmI-w2-QhV"/>
                                                     </constraints>
@@ -40,7 +40,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2z-Xk-oHu">
-                                                    <rect key="frame" x="75" y="13" width="319" height="21"/>
+                                                    <rect key="frame" x="75" y="13" width="319" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,7 +59,6 @@
                                         <connections>
                                             <outlet property="doneButton" destination="HGM-RJ-VPc" id="2M5-4q-zm2"/>
                                             <outlet property="toDoLabel" destination="q2z-Xk-oHu" id="aqm-C6-Nd4"/>
-                                            <segue destination="QHE-Vp-kE5" kind="presentation" id="TwT-e0-MXo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -97,12 +96,12 @@
         <!--Detail View Controller-->
         <scene sceneID="GKy-cW-5XV">
             <objects>
-                <viewController id="QHE-Vp-kE5" customClass="DetailViewController" customModule="toDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="QHE-Vp-kE5" customClass="DetailViewController" customModule="toDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qr2-Bf-uXv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B51-J6-GpO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B51-J6-GpO">
                                 <rect key="frame" x="20" y="44" width="374" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
@@ -120,7 +119,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bY3-6M-Osa">
-                                <rect key="frame" x="20" y="540" width="374" height="206"/>
+                                <rect key="frame" x="20" y="540" width="374" height="226"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -136,7 +135,7 @@
                                 <rect key="frame" x="20" y="256" width="374" height="216"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glf-uP-zAS">
-                                <rect key="frame" x="20" y="766" width="374" height="42"/>
+                                <rect key="frame" x="20" y="786" width="374" height="42"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

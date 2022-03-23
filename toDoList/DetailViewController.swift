@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
     
+    var toDo = String()
     var categories = [String]()
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class DetailViewController: UIViewController {
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
         
+        titleTextField.text = toDo
         categories = ["home", "work", "health", "pets"]
         saveButton.layer.cornerRadius = 7
     }
