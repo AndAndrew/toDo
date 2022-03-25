@@ -8,11 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    let defaults = UserDefaults.standard
-    var toDo: [String] = (UserDefaults.standard.object(forKey: "toDoArray") as? [String] != nil)
-    ? UserDefaults.standard.object(forKey: "toDoArray") as! [String]
-    : []
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,17 +15,26 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     @IBAction func addButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Add what to do.", message: nil, preferredStyle: .alert)
-        alertController.addTextField(configurationHandler: nil)
+        alertController.addTextField(configurationHandler: { textField in
+            textField.placeholder = "title"
+        })
+        alertController.addTextField(configurationHandler: { textField in
+            textField.placeholder = "comment"
+        })
+        
         let okAction = UIAlertAction(title: "OK", style: .default) {_ in
-            guard var toDoText = alertController.textFields![0].text else { return }
-            toDoText = toDoText.trimmingCharacters(in: .whitespaces)
-            if toDoText != "" {
-                self.toDo.insert(toDoText, at: 0)
-                DispatchQueue.main.async {
-                    self.defaults.set(self.toDo, forKey: "toDoArray")
-                }
+            guard var title = alertController.textFields![0].text,
+                  let comment = alertController.textFields![1].text else { return }
+            title = title.trimmingCharacters(in: .whitespaces)
+            if title != "" {
+                Base.shared.saveToDoItems(title: title, category: "", comment: comment)
                 self.tableView.reloadData()
             }
         }
@@ -44,14 +48,14 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        toDo.count
+        Base.shared.toDoItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ToDoCell
         cell.backgroundColor = .clear
-        cell.toDoLabel.text = toDo[indexPath.row]
+        cell.toDoLabel.text = Base.shared.toDoItems[indexPath.row].title
         return cell
     }
 }
@@ -59,11 +63,8 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, complete in
-            self.toDo.remove(at: indexPath.row)
+            Base.shared.deleteToDoItems(itemIndex: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            DispatchQueue.main.async {
-                self.defaults.set(self.toDo, forKey: "toDoArray")
-            }
             complete(true)
         }
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
@@ -73,7 +74,7 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        detailVC.toDo = toDo[indexPath.row]
+        detailVC.toDo = Base.shared.toDoItems[indexPath.row]
         present(detailVC, animated: true, completion: nil)
     }
 }
