@@ -11,7 +11,7 @@ class Base {
     let defaults = UserDefaults.standard
     
     static let shared = Base()
-    struct ToDoItem: Codable {
+    struct ToDoItem: Codable, Equatable {
         let title: String
         let category: String
         let comment: String

@@ -16,6 +16,8 @@ class DetailViewController: UIViewController {
     
     var toDo = Base.ToDoItem(title: "", category: "", comment: "")
     var categories = [String]()
+    var index = 0
+    var saveCompletion: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +28,19 @@ class DetailViewController: UIViewController {
         titleTextField.text = toDo.title
         commentTextView.text = toDo.comment
         categories = ["", "home", "work", "health", "pets"]
+        categoryPicker.selectRow(categories.firstIndex(of: toDo.category) ?? 0, inComponent: 0, animated: false)
         saveButton.layer.cornerRadius = 7
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
-        print("save")
-        dismiss(animated: true)
+        let detailToDo = Base.ToDoItem(title: titleTextField.text!,
+                                       category: categories[categoryPicker.selectedRow(inComponent: 0)],
+                                       comment: commentTextView.text)
+        if detailToDo != toDo {
+            Base.shared.deleteToDoItems(itemIndex: index)
+            Base.shared.toDoItems.insert(detailToDo, at: index)
+        }
+        dismiss(animated: true, completion: saveCompletion)
     }
 }
 

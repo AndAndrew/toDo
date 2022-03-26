@@ -75,6 +75,10 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         detailVC.toDo = Base.shared.toDoItems[indexPath.row]
+        detailVC.index = indexPath.row
+        detailVC.saveCompletion = {
+            tableView.reloadData()
+        }
         present(detailVC, animated: true, completion: nil)
     }
 }
