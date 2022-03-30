@@ -11,6 +11,7 @@ class ToDoCell: UITableViewCell {
 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var toDoLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
 
     override func setSelected(_ selected: Bool, animated: Bool) {

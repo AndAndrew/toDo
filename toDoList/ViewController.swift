@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    let categoryColors: [UIColor] = [.clear, .cyan, .green, .blue, .orange]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -56,6 +58,8 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ToDoCell
         cell.backgroundColor = .clear
         cell.toDoLabel.text = Base.shared.toDoItems[indexPath.row].title
+        cell.categoryLabel.text = Base.shared.toDoItems[indexPath.row].category
+        cell.categoryLabel.textColor = categoryColors[Base.shared.categories.firstIndex(of: Base.shared.toDoItems[indexPath.row].category) ?? 0]
         return cell
     }
 }

@@ -15,7 +15,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     var toDo = Base.ToDoItem(title: "", category: "", comment: "")
-    var categories = [String]()
     var index = 0
     var saveCompletion: (() -> Void)?
     
@@ -27,14 +26,14 @@ class DetailViewController: UIViewController {
         
         titleTextField.text = toDo.title
         commentTextView.text = toDo.comment
-        categories = ["", "home", "work", "health", "pets"]
-        categoryPicker.selectRow(categories.firstIndex(of: toDo.category) ?? 0, inComponent: 0, animated: false)
+        let categoryIndex = Base.shared.categories.firstIndex(of: toDo.category)
+        categoryPicker.selectRow(categoryIndex ?? 0, inComponent: 0, animated: false)
         saveButton.layer.cornerRadius = 7
     }
 
     @IBAction func saveButtonTapped(_ sender: Any) {
         let detailToDo = Base.ToDoItem(title: titleTextField.text!,
-                                       category: categories[categoryPicker.selectedRow(inComponent: 0)],
+                                       category: Base.shared.categories[categoryPicker.selectedRow(inComponent: 0)],
                                        comment: commentTextView.text)
         if detailToDo != toDo {
             Base.shared.deleteToDoItems(itemIndex: index)
@@ -50,10 +49,10 @@ extension DetailViewController: UIPickerViewDataSource, UIPickerViewDelegate  {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        categories.count
+        Base.shared.categories.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        categories[row]
+        Base.shared.categories[row]
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 class Base {
     let defaults = UserDefaults.standard
+    let categories = ["", "home", "work", "health", "pets"]
     
     static let shared = Base()
     struct ToDoItem: Codable, Equatable {
