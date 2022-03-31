@@ -36,7 +36,7 @@ class ViewController: UIViewController {
                   let comment = alertController.textFields![1].text else { return }
             title = title.trimmingCharacters(in: .whitespaces)
             if title != "" {
-                Base.shared.saveToDoItems(title: title, category: "", comment: comment)
+                Base.shared.saveToDoItems(title: title, category: "", comment: comment, deadline: Date.now)
                 self.tableView.reloadData()
             }
         }

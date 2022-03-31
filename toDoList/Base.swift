@@ -16,6 +16,7 @@ class Base {
         let title: String
         let category: String
         let comment: String
+        let deadline: Date?
     }
     
     var toDoItems: [ToDoItem] {
@@ -34,8 +35,8 @@ class Base {
         }
     }
     
-    func saveToDoItems(title: String, category: String, comment: String) {
-        let item = ToDoItem(title: title, category: category, comment: comment)
+    func saveToDoItems(title: String, category: String, comment: String, deadline: Date) {
+        let item = ToDoItem(title: title, category: category, comment: comment, deadline: deadline)
         toDoItems.insert(item, at: 0)
     }
     func deleteToDoItems(itemIndex: Int) {
