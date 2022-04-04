@@ -9,7 +9,7 @@ import Foundation
 
 class Base {
     let defaults = UserDefaults.standard
-    let categories = ["", "home", "work", "health", "pets"]
+    let categories = [" ", "home", "work", "health", "pets"]
     
     static let shared = Base()
     struct ToDoItem: Codable, Equatable {
@@ -35,7 +35,7 @@ class Base {
         }
     }
     
-    func saveToDoItems(title: String, category: String, comment: String, deadline: Date) {
+    func saveToDoItems(title: String, category: String, comment: String, deadline: Date?) {
         let item = ToDoItem(title: title, category: category, comment: comment, deadline: deadline)
         toDoItems.insert(item, at: 0)
     }

@@ -36,7 +36,7 @@ class ViewController: UIViewController {
                   let comment = alertController.textFields![1].text else { return }
             title = title.trimmingCharacters(in: .whitespaces)
             if title != "" {
-                Base.shared.saveToDoItems(title: title, category: "", comment: comment, deadline: Date.now)
+                Base.shared.saveToDoItems(title: title, category: " ", comment: comment, deadline: nil)
                 self.tableView.reloadData()
             }
         }
@@ -60,6 +60,21 @@ extension ViewController: UITableViewDataSource {
         cell.toDoLabel.text = Base.shared.toDoItems[indexPath.row].title
         cell.categoryLabel.text = Base.shared.toDoItems[indexPath.row].category
         cell.categoryLabel.textColor = categoryColors[Base.shared.categories.firstIndex(of: Base.shared.toDoItems[indexPath.row].category) ?? 0]
+        
+        if let deadline = Base.shared.toDoItems[indexPath.row].deadline {
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM")
+            cell.deadlineButton.setTitle(dateFormatter.string(from: deadline), for: .normal)
+            if deadline < Date.now {
+                cell.deadlineButton.setTitleColor(.red, for: .normal)
+            } else {
+                cell.deadlineButton.setTitleColor(.black, for: .normal)
+            }
+        } else {
+            cell.deadlineButton.setTitle("", for: .normal)
+        }
+        
         return cell
     }
 }
@@ -81,6 +96,7 @@ extension ViewController: UITableViewDelegate {
         detailVC.toDo = Base.shared.toDoItems[indexPath.row]
         detailVC.index = indexPath.row
         detailVC.saveCompletion = {
+            
             tableView.reloadData()
         }
         present(detailVC, animated: true, completion: nil)

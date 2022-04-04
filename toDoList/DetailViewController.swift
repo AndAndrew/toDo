@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
     
-    var toDo = Base.ToDoItem(title: "", category: "", comment: "", deadline: Date.now)
+    var toDo = Base.ToDoItem(title: "", category: "", comment: "", deadline: nil)
     var index = 0
     var saveCompletion: (() -> Void)?
     
@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
         let detailToDo = Base.ToDoItem(title: titleTextField.text!,
                                        category: Base.shared.categories[categoryPicker.selectedRow(inComponent: 0)],
                                        comment: commentTextView.text,
-                                       deadline: Date.now)
+                                       deadline: deadlinePicker.date)
         if detailToDo != toDo {
             Base.shared.deleteToDoItems(itemIndex: index)
             Base.shared.toDoItems.insert(detailToDo, at: index)
